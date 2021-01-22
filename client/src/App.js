@@ -20,7 +20,7 @@ function App() {
 
   const currTime = new Date().getTime() * 1000
 
-  const GenerateDeck = () => data.sort((a, b) => a.endTime - b.endTime).filter(e => e.endTime*1000>currTime)
+  const GenerateDeck = () => data.filter(e => e.endTime*1000>currTime).sort((a, b) => a.endTime - b.endTime)
   .map(e => <TaskCard name={e.name} type={e.type} class={e.class} endTime={new Date(e.endTime).toLocaleDateString("en-US")} />)
 
   return (
@@ -28,8 +28,6 @@ function App() {
       display: "inline-flex",
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "teal",
-      width: "90%",
       flexWrap: "wrap"
     }}>
       <GenerateDeck />
