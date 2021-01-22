@@ -21,7 +21,7 @@ app.get('/1b', async (req, res) => {
     const client = new MongoClient(uri, { useNewUrlParser: true });
     await client.connect()
     const collection = client.db("1b").collection("tasks");
-    const data = await collection.find({}).toArray()
+    const data = await collection.find({}, { projection: { _id: 0  } }).toArray()
     res.send(data)
     client.close()
 }) 
