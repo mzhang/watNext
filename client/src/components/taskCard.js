@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card"
 
 export function TaskCard(props) {
     return (
-        <Card style={{ width: '18rem'}} className="text-center">
+        <Card style={{ width: '18rem' }} className="text-center top-margin">
             <Card.Title><h1>{props.name}</h1></Card.Title>
             <Card.Body>
                 <Card.Text>

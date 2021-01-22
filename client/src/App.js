@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function App() { 
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const getRes = async () => {
@@ -18,12 +18,12 @@ function App() {
     getRes();
   }, []);
 
-  
+  const GenerateDeck = () => data.map(e => <TaskCard name={e.name} type={e.type} class={e.class} endTime={e.endTime} />)
+
 
   return (
     <div>
-      <p>{JSON.stringify(data)}</p>
-      <TaskCard name="name" type="type" class="class" endTime="endTime" />
+      <GenerateDeck />
     </div>
   );
 }
