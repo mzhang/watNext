@@ -1,38 +1,57 @@
-import './App.css';
-import { TaskCard } from './components/taskCard.js'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Form, Button } from "react-bootstrap"
 
 function App() { 
-  const [data, setData] = useState([]);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    const getRes = async () => {
-      const res = await axios({
-      method: 'get',
-      url: 'http://localhost:4000/1b'
-    })
-    setData(res.data);
+  async function getUser() {
+    try {
+      const response = await axios.get('/user?ID=12345');
+      console.log(response);
+    } catch (error) {
+      console.error(error);
     }
-    getRes();
-  }, []);
+  }
 
-  const currTime = new Date().getTime() * 1000
+  async function handleSubmit(event) {
+    const form = event.currentTarget;
+    event.preventDefault();
 
-  const GenerateDeck = () => data.filter(e => e.endTime*1000>currTime).sort((a, b) => a.endTime - b.endTime)
-  .map(e => <TaskCard name={e.name} type={e.type} class={e.class} endTime={new Date(e.endTime).toLocaleDateString("en-US")} />)
+    const registered = {
+      username: username,
+      password: password
+    }
+
+    setUsername("");
+    setPassword("");
+
+    const response = await axios.post('http://localhost:4000/api/register', registered);
+    console.log(response);
+
+  }
 
   return (
-    <div style={{
-      display: "inline-flex",
-      justifyContent: "center",
-      alignItems: "center",
-      flexWrap: "wrap"
-    }}>
-      <GenerateDeck />
-    </div>
-  );
-}
+    <div>
+      <Container>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Username</Form.Label>
+            <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
+          </Form.Group>
 
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.target.value)} />
+          </Form.Group>
+      
+          <Button variant="danger" type="submit">Submit</Button>
+        </Form>
+      </Container>
+    </div>
+  )
+  
+}
 export default App;
