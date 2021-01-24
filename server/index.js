@@ -1,31 +1,25 @@
-const express = require('express')
-const cors = require('cors')
-const app = express()
-app.use(cors())
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv').config();
+const routes = require("./routes/routes");
 
-const path = require('path');
-const port = 4000;
+const app = express();
+app.use(express.json());
+app.use(cors());
+app.use('/api', routes);
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/index.html'));
-}) 
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
-app.get('/contact', (req, res) => {
-    res.sendFile(path.join(__dirname + '/contact.html'));
-}) 
+const db = mongoose.connection;
+db.once('open', () => console.log("we're in."));
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://matt:matt@cluster0.o24bv.mongodb.net/1b?retryWrites=true&w=majority";
 
-app.get('/1b', async (req, res) => {
-    const client = new MongoClient(uri, { useNewUrlParser: true });
-    await client.connect()
-    const collection = client.db("1b").collection("tasks");
-    const data = await collection.find({}, { projection: { _id: 0  } }).toArray()
-    res.send(data)
-    client.close()
-}) 
+app.listen(4000, () => console.log(`We're live!`));
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-  })
+// app.get('/1b', async (req, res) => {
+//     const collection = client.db("1b").collection("tasks");
+//     const data = await collection.find({}, { projection: { _id: 0  } }).toArray()
+//     res.send(data)
+//     client.close()
+// }) 
