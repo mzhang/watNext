@@ -5,7 +5,7 @@ const task = new mongoose.Schema({
     name: String,
     type: String,
     endTime: Number,
-    users: ObjectId
+    users: [ObjectId]
   });
 
 module.exports = mongoose.model('task', task)
