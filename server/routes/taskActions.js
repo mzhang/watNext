@@ -28,8 +28,7 @@ router.get('/getComments/:id', async (req,res)=>{
     });
 })
 
-//remove jwt on logout
-router.get("/tasks", async (req, res)=>{
+router.get("/getTasks", async (req, res)=>{
     const taskList = await Task.find({endTime: {$gte: Date.now()}}).sort({endTime: 1});
     return res.json({tasks: taskList});
 });
