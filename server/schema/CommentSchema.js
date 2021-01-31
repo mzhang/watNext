@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const CommentSchema = new mongoose.Schema({
     user: String,
     task: String,
-    comments: String
+    comment: String
 });
 
 module.exports = mongoose.model('comment', CommentSchema)

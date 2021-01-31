@@ -12,19 +12,19 @@ router.post('/addComment',passport.authenticate('jwt',{session : false}), async 
     const {task, comment} = req.body;
 
     const newComment = new Comment({
-        user: req.user,
+        user: req.user.username,
         task: task,
         comment: comment
     })
 
-    await Comment.save().catch(err=>{res.status(400).json(err); return})
+    await newComment.save().catch(err=>{res.status(400).json(err); return})
     return res.status(200).json({message:"Comment saved!", comment:comment})
 })
 
 router.get('/getComments/:id', async (req,res)=>{
     Comment.find({task:req.params.id}).exec((err,document)=>{
         if (err) res.status(500).json({message : "Error has occured", msgError: true});
-        else res.status(200).json({comments : document}); 
+        else res.status(200).json({comment : document}); 
     });
 })
 
