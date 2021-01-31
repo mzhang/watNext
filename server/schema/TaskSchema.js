@@ -1,11 +1,9 @@
-const { Double } = require("mongodb");
 const mongoose = require("mongoose");
 
-const task = new mongoose.Schema({
+const TaskSchema = new mongoose.Schema({
     name: String,
     type: String,
-    endTime: Number,
-    users: [ObjectId]
-  });
+    endTime: Number
+});
 
-module.exports = mongoose.model('task', task)
+module.exports = mongoose.model('task', TaskSchema)
