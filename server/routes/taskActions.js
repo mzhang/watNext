@@ -15,7 +15,7 @@ router.post('/addComment',passport.authenticate('jwt',{session : false}), async 
     const newComment = new Comment({
         user: req.user.username,
         task: task,
-        comment: comment
+        commentContent: comment
     })
 
     await newComment.save().catch(err=>{res.status(400).json(err); return})
