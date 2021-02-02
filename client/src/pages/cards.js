@@ -10,16 +10,16 @@ function App() {
     const getRes = async () => {
       const res = await axios({
       method: 'get',
-      url: 'http://localhost:4000/1b'
+      url: 'http://localhost:4000/task/getTasks'
     })
     setData(res.data);
     }
     getRes();
   }, []);
 
-  const currTime = new Date().getTime() * 1000
+  console.log(data)
 
-  const GenerateDeck = () => data.map(e => <TaskCard name={e.name} type={e.type} class={e.class} endTime={new Date(e.endTime).toLocaleDateString("en-US")} />)
+  const GenerateDeck = () => data.tasks ? (data.tasks).map(e => <TaskCard name={e.name} type={e.type} class={e.class} endTime={new Date(e.endTime).toLocaleDateString("en-US")} />) : "No tasks found!"
 
   return (
     <div style={{
