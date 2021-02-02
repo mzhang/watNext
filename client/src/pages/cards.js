@@ -1,4 +1,4 @@
-import { TaskCard } from '../components/taskCard.js'
+import { TaskCard } from '../components/TaskCard.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
