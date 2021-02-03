@@ -16,7 +16,6 @@ export default function LoginForm() {
 
     setUsername("");
     setPassword("");
-    console.log(credentials)
     const response = await axios.post('http://localhost:4000/user/login', credentials);
     console.log(response);
 
