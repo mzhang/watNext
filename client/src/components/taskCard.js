@@ -1,18 +1,17 @@
 import React from "react"
-import Card from "react-bootstrap/Card"
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import {Card, CardActions, CardContent} from "@material-ui/core/"
+import {Typography} from '@material-ui/core/';
+import TaskModal from "../components/TaskModal"
 
 export function TaskCard(props) {
     console.log(props.id)
     return (
         <Card style={{ width: '18rem', height:'20rem',
-            display: "inline-flex",
-            justifyContent: "center",
-            alignItems: "center",
-            textAlign: "center",
-            flexWrap: "wrap"
+            // display: "inline-flex",
+            // justifyContent: "center",
+            // alignItems: "center",
+            // textAlign: "center",
+            // flexWrap: "wrap"
           }}>
             <CardContent>
                 <Typography variant="h5" component="h2">
@@ -27,6 +26,9 @@ export function TaskCard(props) {
                 <Typography variant="body2" component="p">
                     {props.endTime}
                 </Typography>
+                <CardActions>
+                    <TaskModal id={props.id}/>
+                </CardActions>
             </CardContent>
 
         </Card>
