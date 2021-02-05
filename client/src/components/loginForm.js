@@ -30,7 +30,7 @@ export default function LoginForm() {
                 type="password" autoComplete="current-password" variant="filled"
                 value={password} onChange={e => setPassword(e.target.value)}
             /></div>
-            <Button type="submit">Login</Button>
+            <Button variant="contained" color="primary" type="submit">Login</Button>
         </form>
     </Container>
   )

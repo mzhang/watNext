@@ -11,6 +11,6 @@ export default function LogoutButton() {
         })}
     
     return (
-        <Button onClick={() => { logout() }}>Logout</Button>
+        <Button variant="contained" color="primary" onClick={() => { logout() }}>Logout</Button>
     )
 }
