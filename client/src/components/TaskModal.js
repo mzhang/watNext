@@ -4,8 +4,6 @@ import {Modal, Fade, Backdrop, Button} from '@material-ui/core/';
 import { makeStyles } from '@material-ui/core/styles';
 import CommentDeck from './CommentDeck';
 
-
-
 export default function TransitionsModal(props) {
   const [open, setOpen] = useState(false);
 

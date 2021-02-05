@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function TaskDeck() { 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState("Loading!");
 
   useEffect(() => {
     const getRes = async () => {
@@ -16,7 +16,11 @@ export default function TaskDeck() {
     getRes();
   }, []);
 
-  const GenerateDeck = () => data.tasks ? (data.tasks).map(e => <TaskCard id={e._id} name={e.name} type={e.type} class={e.class} endTime={new Date(e.endTime).toLocaleDateString("en-US")} />) : "No tasks found!"
+  const GenerateDeck = () => {
+    if (data === "Loading!") return "Loading!"
+    else if (data.tasks.length) return (data.tasks).map(e => <TaskCard id={e._id} name={e.name} type={e.type} class={e.class} endTime={new Date(e.endTime).toLocaleDateString("en-US")} />)
+    else return "The grind has stopped."
+  }
 
   return (
     <div style={{
