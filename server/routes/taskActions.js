@@ -4,6 +4,8 @@ const passport = require('passport');
 const passportConfig = require('../passportConfig');
 const jwt = require("jsonwebtoken");
 
+router.use(passport.initialize());
+
 const User = require("../schema/UserSchema");
 const Task = require("../schema/TaskSchema");
 const Comment = require("../schema/CommentSchema");

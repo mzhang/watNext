@@ -7,12 +7,18 @@ const cookieParser = require('cookie-parser');
 const loginRoutes = require("./routes/login");
 const taskActions = require("./routes/taskActions");
 
+var corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials : true
+   }
+
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use('/user', loginRoutes);
 app.use('/task', taskActions);
+
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
