@@ -11,10 +11,9 @@ export default function CardDeck(props) {
     .catch((err) => setData(err))
   },[])
 
-
   const GenerateDeck = () => {
     if (data === "Loading!") return "Loading!"
-    else if (data?.data?.comment.length) return (data.tasks).map(e => <CommentCard user={e.user} commentContent={e.commentContent}/>)
+    else if (data?.data?.comment.length) return (data.data.comment).map(e => <CommentCard user={e.user} commentContent={e.commentContent}/>)
     else return <CommentCard user={"No comments here!"} commentContent={"Maybe write one?"}/>
   }
 

@@ -5,6 +5,9 @@ import Home from './pages/home';
 import Cards from './pages/cards'
 import ComponentLibrary from './pages/componentLibrary'
 
+import axios from 'axios';
+axios.defaults.withCredentials = true
+
 function App() { 
 
   return (

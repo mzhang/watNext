@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import {Modal, Fade, Backdrop, Button, Container} from '@material-ui/core/';
 import { makeStyles } from '@material-ui/core/styles';
 import CommentDeck from './CommentDeck';
+import CommentForm from './CommentForm';
 
-export default function TransitionsModal(props) {
+export default function TaskModal(props) {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {setOpen(true)};
@@ -27,7 +27,10 @@ export default function TransitionsModal(props) {
         }}
       >
         <Fade in={open}>
-          <Container><CommentDeck id={props.id}/></Container>
+          <Container>
+            <CommentDeck id={props.id} />
+            <CommentForm id={props.id} />
+          </Container>
         </Fade>
       </Modal>
     </div>

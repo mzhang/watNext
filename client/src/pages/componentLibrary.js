@@ -2,8 +2,9 @@ import React from 'react';
 import LogoutButton from "../components/LogoutButton"
 import LoginForm from "../components/LoginForm"
 import RegisterForm from "../components/RegisterForm"
-import TaskModal from "../components/TaskModal"
 import CommentCard from "../components/CommentCard"
+import CommentForm from "../components/CommentForm"
+import IsAuthenticatedButton from "../components/IsAuthenticatedButton"
 
 export default function Home() {
     return (
@@ -13,8 +14,9 @@ export default function Home() {
             <LogoutButton />
             <LoginForm />
             <RegisterForm />
-            <TaskModal id={"60090777d3ec910dd872161a"} />
-            <CommentCard user={"Matt"} commentContent={"Hello"} />
+            <CommentForm id={"60090777d3ec910dd87215e0"}/>
+            <CommentCard user={"user"} commentContent={"commentContent"} />
+            <IsAuthenticatedButton />
         </div>
     )
 }
