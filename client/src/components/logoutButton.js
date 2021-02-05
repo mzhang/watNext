@@ -7,7 +7,7 @@ export default function LogoutButton() {
     const logout = async () => {
         await axios({
         method: 'get',
-        url: 'http://localhost:4000/login/logout'
+        url: 'http://localhost:4000/user/logout'
         })}
     
     return (
