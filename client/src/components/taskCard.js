@@ -1,7 +1,11 @@
 import React from "react"
 import Card from "react-bootstrap/Card"
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 export function TaskCard(props) {
+    console.log(props.id)
     return (
         <Card style={{ width: '18rem', height:'20rem',
             display: "inline-flex",
@@ -10,16 +14,21 @@ export function TaskCard(props) {
             textAlign: "center",
             flexWrap: "wrap"
           }}>
-            <div>
-                <Card.Title><h4>{props.name}</h4></Card.Title>
-                <Card.Body>
-                    <Card.Text>
-                        <p>{props.type}</p>
-                        <p>{props.class}</p>
-                        <p>{props.endTime}</p>
-                    </Card.Text>
-                </Card.Body>
-            </div>
+            <CardContent>
+                <Typography variant="h5" component="h2">
+                    {props.name}
+                </Typography>
+                <Typography variant="body2" component="p">
+                    {props.class}
+                </Typography>
+                <Typography variant="body2" component="p">
+                    {props.type}
+                </Typography>
+                <Typography variant="body2" component="p">
+                    {props.endTime}
+                </Typography>
+            </CardContent>
+
         </Card>
         
     )
