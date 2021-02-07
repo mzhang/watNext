@@ -44,6 +44,13 @@ router.get('/completedStatus/:taskID',passport.authenticate('jwt',{session : fal
     return res.status(200).json({isDone:isDone, task:req.params.taskID})
 })
 
+router.get('/taskMetadata/:taskID',passport.authenticate('jwt',{session : false}), async (req,res)=>{
+    const task = await Task.findById(req.params.taskID).catch(err=>{res.status(400).json(err); return})
+    const isDone = (task.completedUsers).includes(req.user.username)
+    const commentCount = await Comment.countDocuments({task: {$eq:req.params.taskID}}).catch(err=>{res.status(400).json(err); return})
+    return res.status(200).json({isDone:isDone, commentCount:commentCount, task:req.params.taskID})
+})
+
 router.get('/getComments/:id', async (req,res)=>{
     Comment.find({task:req.params.id}).exec((err,document)=>{
         if (err) res.status(500).json({message : "Error has occured", msgError: true});
