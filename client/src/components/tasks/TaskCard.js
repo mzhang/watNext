@@ -1,7 +1,7 @@
 import React from "react"
 import {Card, CardActions, CardContent} from "@material-ui/core/"
 import {Typography} from '@material-ui/core/';
-import TaskModal from "../components/TaskModal"
+import TaskModal from "./TaskModal"
 
 export default function TaskCard(props) {
     console.log(props.id)

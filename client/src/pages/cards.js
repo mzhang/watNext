@@ -1,4 +1,4 @@
-import TaskDeck from '../components/TaskDeck'
+import TaskDeck from '../components/tasks/TaskDeck'
 
 export default function Cards() { 
   
