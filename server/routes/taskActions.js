@@ -26,16 +26,22 @@ router.post('/addComment',passport.authenticate('jwt',{session : false}), async 
 
 router.post('/markAsDone/:taskID',passport.authenticate('jwt',{session : false}), async (req,res)=>{
 
-    await Task.findByIdAndUpdate(req.params.taskID, {$addToSet : { completedUsers: req.user.username }}, {useFindAndModify: true})
+    await Task.updateOne({_id: req.params.taskID}, {$addToSet : { completedUsers: req.user.username }})
         .catch(err=>{res.status(400).json(err); return})
     return res.status(200).json({message:"Task marked as complete!", TaskID:req.params.taskID})
 })
 
 router.post('/markAsUndone/:taskID',passport.authenticate('jwt',{session : false}), async (req,res)=>{
 
-    await Task.findByIdAndUpdate(req.params.taskID, {$pull : { completedUsers: req.user.username }}, {useFindAndModify: true})
+    await Task.updateOne({_id: req.params.taskID}, {$pull : { completedUsers: req.user.username }})
         .catch(err=>{res.status(400).json(err); return})
     return res.status(200).json({message:"Task marked as incomplete!", TaskID:req.params.taskID})
+})
+
+router.get('/completedStatus/:taskID',passport.authenticate('jwt',{session : false}), async (req,res)=>{
+    const task = await Task.findById(req.params.taskID).catch(err=>{res.status(400).json(err); return})
+    const isDone = (task.completedUsers).includes(req.user.username)
+    return res.status(200).json({isDone:isDone, task:req.params.taskID})
 })
 
 router.get('/getComments/:id', async (req,res)=>{
