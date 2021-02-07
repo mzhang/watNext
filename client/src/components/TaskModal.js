@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {Modal, Fade, Backdrop, Button, Container} from '@material-ui/core/';
 import { makeStyles } from '@material-ui/core/styles';
-import CommentDeck from './CommentDeck';
-import CommentForm from './CommentForm';
+import CommentDeck from './comments/CommentDeck';
+import CommentForm from './comments/CommentForm';
 
 export default function TaskModal(props) {
   const [open, setOpen] = useState(false);

@@ -2,8 +2,8 @@ import React from 'react';
 import LogoutButton from "../components/LogoutButton"
 import LoginForm from "../components/LoginForm"
 import RegisterForm from "../components/RegisterForm"
-import CommentCard from "../components/CommentCard"
-import CommentForm from "../components/CommentForm"
+import CommentCard from "../components/comments/CommentCard"
+import CommentForm from "../components/comments/CommentForm"
 import IsAuthenticatedButton from "../components/IsAuthenticatedButton"
 
 export default function Home() {

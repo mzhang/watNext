@@ -3,7 +3,7 @@ import {Card, CardActions, CardContent} from "@material-ui/core/"
 import {Typography} from '@material-ui/core/';
 import TaskModal from "../components/TaskModal"
 
-export function TaskCard(props) {
+export default function TaskCard(props) {
     console.log(props.id)
     return (
         <Card style={{ width: '18rem', height:'20rem',

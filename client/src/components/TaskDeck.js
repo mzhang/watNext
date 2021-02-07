@@ -1,4 +1,4 @@
-import { TaskCard } from './TaskCard.js'
+import TaskCard from './TaskCard.js'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 

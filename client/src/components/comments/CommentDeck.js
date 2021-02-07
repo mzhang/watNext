@@ -1,4 +1,4 @@
-import CommentCard from '../components/CommentCard'
+import CommentCard from './CommentCard'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
