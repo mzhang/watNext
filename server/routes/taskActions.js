@@ -31,6 +31,14 @@ router.post('/markAsDone/:taskID',passport.authenticate('jwt',{session : false})
     return res.status(200).json({message:"Task marked as complete!", TaskID:req.params.taskID})
 })
 
+router.post('/markAsUndone/:taskID',passport.authenticate('jwt',{session : false}), async (req,res)=>{
+
+    await Task.findByIdAndUpdate(req.params.taskID, {$pull : { completedUsers: req.user.username }}, {useFindAndModify: true})
+        .catch(err=>{res.status(400).json(err); return})
+    return res.status(200).json({message:"Task marked as incomplete!", TaskID:req.params.taskID})
+})
+
+
 router.get('/getComments/:id', async (req,res)=>{
     Comment.find({task:req.params.id}).exec((err,document)=>{
         if (err) res.status(500).json({message : "Error has occured", msgError: true});
