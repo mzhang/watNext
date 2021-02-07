@@ -25,12 +25,4 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
 const db = mongoose.connection;
 db.once('open', () => console.log("we're in."));
 
-
 app.listen(4000, () => console.log(`We're live!`));
-
-// app.get('/1b', async (req, res) => {
-//     const collection = client.db("1b").collection("tasks");
-//     const data = await collection.find({}, { projection: { _id: 0  } }).toArray()
-//     res.send(data)
-//     client.close()
-// }) 
