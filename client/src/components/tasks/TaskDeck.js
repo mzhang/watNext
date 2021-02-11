@@ -9,7 +9,7 @@ export default function TaskDeck() {
     const getRes = async () => {
       const res = await axios({
       method: 'get',
-      url: 'http://localhost:4000/task/getTasksDateFiltered'
+      url: 'http://localhost:4000/task/getTasksDateFilteredWithMetadata'
     })
     setData(res.data);
     }
