@@ -26,6 +26,7 @@ export default function TaskDeck() {
       
       return (data.tasks).map(e => <TaskCard 
       id={e._id} 
+      key={e._id} 
       name={e.name} 
       type={e.type} 
       class={e.class} 
