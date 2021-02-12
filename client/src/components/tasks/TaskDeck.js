@@ -18,7 +18,20 @@ export default function TaskDeck() {
 
   const GenerateDeck = () => {
     if (data === "Loading!") return "Loading!"
-    else if (data?.tasks?.length) return (data.tasks).map(e => <TaskCard id={e._id} name={e.name} type={e.type} class={e.class} endTime={new Date(e.endTime).toLocaleDateString("en-US")} />)
+    else if (data?.tasks?.length) { 
+      console.log(data.tasks)
+      // (data.tasks).forEach(e => {
+      //   console.log(e.isDone, e.commentCount);
+      // });
+      
+      return (data.tasks).map(e => <TaskCard 
+      id={e._id} 
+      name={e.name} 
+      type={e.type} 
+      class={e.class} 
+      endTime={new Date(e.endTime).toLocaleDateString("en-US")}
+      commentCount={e.commentCount}
+      isDone={e.isDone} />) }
     else return "The grind has stopped."
   }
 

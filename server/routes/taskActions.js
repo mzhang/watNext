@@ -61,14 +61,18 @@ router.get('/getComments/:id', async (req,res)=>{
 router.get("/getTasksDateFilteredWithMetadata",passport.authenticate('jwt',{session : false}), async (req, res)=>{
     const taskList = await Task.find({endTime: {$gte: Date.now()}}).sort({endTime: 1});
     const outList = [];
+    const promises = [];
     for (task of taskList) {
-        task = task.toObject();
-        task.isDone = (task.completedUsers).includes(req.user.username)
-        task.commentCount = await Comment.countDocuments({task: {$eq:task._id}}).catch(err=>{res.status(400).json(err); return})
-        outList.push(task)
+        promises.push(new Promise(async (resolve) => {
+            task = task.toObject();
+            task.isDone = (task.completedUsers).includes(req.user.username)
+            task.commentCount = await Comment.countDocuments({task: {$eq:task._id}}).catch(err=>{res.status(400).json(err); return})
+            resolve(outList.push(task))
+        }))    
     };
-    
-    return res.json({tasks: outList});
+    Promise.all(promises)
+    .then((results)=>res.json({tasks: outList}))
+    .catch((err)=>res.json({tasks: err}))
 });
 
 router.get("/getTasksDateFiltered", async (req, res)=>{

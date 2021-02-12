@@ -5,8 +5,8 @@ import TaskModal from "./TaskModal"
 import ToggleCompleteButton from "./ToggleCompleteButton"
 
 export default function TaskCard(props) {
-    const [ commentCount, setCommentCount ] = useState(0);
-    const [ isDone, setIsDone ] = useState(false);
+    // const [ commentCount, setCommentCount ] = useState(0);
+    // const [ isDone, setIsDone ] = useState(false);
     return (
         <Card style={{ width: '18rem', height:'20rem',
             // display: "inline-flex",
@@ -29,11 +29,13 @@ export default function TaskCard(props) {
                     {props.endTime}
                 </Typography>
                 <Typography variant="body2" component="p">
-                    {commentCount} comments so far!
+                    {props.commentCount} comments so far!
+                    <br />
+                    {props.isDone ? "You've already finished this!" : "Get this done!"}
                 </Typography>
                 <CardActions>
                     <TaskModal id={props.id}/>
-                    <ToggleCompleteButton id={props.id} isDone={isDone}/>
+                    <ToggleCompleteButton id={props.id} isDone={props.isDone}/>
                 </CardActions>
             </CardContent>
 
