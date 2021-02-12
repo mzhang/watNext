@@ -68,7 +68,10 @@ router.get("/getTasksDateFilteredWithMetadata",passport.authenticate('jwt',{sess
         resolve(outList.push(task))
     }))
     Promise.all(promises)
-    .then((results)=>res.json({tasks: outList}))
+    .then((results)=>{
+        // console.log(outList.sort((a,b)=>a.endTime-b.endTime)==outList);
+        res.json({tasks: outList.sort((a,b)=>a.endTime-b.endTime)})
+    })
     .catch((err)=>res.json({tasks: err}))
 });
 
