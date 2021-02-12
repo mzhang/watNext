@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Router } from '@reach/router';
 import Home from './pages/home';
 import Cards from './pages/cards'

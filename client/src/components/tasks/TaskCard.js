@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {Card, CardActions, CardContent} from "@material-ui/core/"
 import {Typography} from '@material-ui/core/';
 import TaskModal from "./TaskModal"
 import ToggleCompleteButton from "./ToggleCompleteButton"
 
 export default function TaskCard(props) {
-    // const [ commentCount, setCommentCount ] = useState(0);
-    // const [ isDone, setIsDone ] = useState(false);
+    // const [ opacity, setOpacity ] = useState(props.isDone ? 0.15 : 1);
+    const [isDone, setIsDone] = useState(props.isDone);
+
+    // useEffect(() => {
+    //     setOpacity(props.isDone ? 0.15 : 1) 
+    // },[props.isDone]);
+
     return (
-        <Card style={{ width: '18rem', height:'20rem',
-            // display: "inline-flex",
-            // justifyContent: "center",
-            // alignItems: "center",
-            // textAlign: "center",
-            // flexWrap: "wrap"
-          }}>
+        <Card style={{width: '18rem', height:'20rem', opacity: isDone ? 0.15 : 1}}>
             <CardContent>
                 <Typography variant="h5" component="h2">
                     {props.name}
@@ -35,7 +34,7 @@ export default function TaskCard(props) {
                 </Typography>
                 <CardActions>
                     <TaskModal id={props.id}/>
-                    <ToggleCompleteButton id={props.id} isDone={props.isDone}/>
+                    <ToggleCompleteButton id={props.id} isDone={props.isDone} isDone={isDone} setIsDone={setIsDone}/>
                 </CardActions>
             </CardContent>
 
