@@ -9,7 +9,7 @@ export default function CardDeck(props) {
       axios.get("http://localhost:4000/task/getComments/"+props.id)
     .then((data) => {console.log(data);setData(data)})
     .catch((err) => setData(err))
-  },[])
+  },[props.id])
 
   const GenerateDeck = () => {
     if (data === "Loading!") return "Loading!"
