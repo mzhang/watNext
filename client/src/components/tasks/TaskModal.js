@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {Modal, Fade, Backdrop, Button, Container} from '@material-ui/core/';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import CommentDeck from '../comments/CommentDeck';
 import CommentForm from '../comments/CommentForm';
 

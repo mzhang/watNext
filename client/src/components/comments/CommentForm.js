@@ -15,7 +15,7 @@ export default function RegisterForm(props) {
 
     setComment("");
     console.log(commentPayload);
-    const response = await axios.post('http://localhost:4000/task/addComment', commentPayload).catch(err => console.log(err))
+    await axios.post('http://localhost:4000/task/addComment', commentPayload).catch(err => console.log(err))
     
 
   }

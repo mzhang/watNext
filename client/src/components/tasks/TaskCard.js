@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {Card, CardActions, CardContent} from "@material-ui/core/"
 import {Typography} from '@material-ui/core/';
 import TaskModal from "./TaskModal"
@@ -34,7 +34,7 @@ export default function TaskCard(props) {
                 </Typography>
                 <CardActions>
                     <TaskModal id={props.id}/>
-                    <ToggleCompleteButton id={props.id} isDone={props.isDone} isDone={isDone} setIsDone={setIsDone}/>
+                    <ToggleCompleteButton id={props.id} isDone={isDone} setIsDone={setIsDone}/>
                 </CardActions>
             </CardContent>
 
