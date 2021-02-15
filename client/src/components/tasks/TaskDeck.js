@@ -7,19 +7,15 @@ export default function TaskDeck() {
 
   useEffect(() => {
     const getRes = async () => {
-      const res = await axios({
-      method: 'get',
-      url: 'http://localhost:4000/task/getTasksDateFilteredWithMetadata'
-    })
-    setData(res.data);
+      const res = await axios.get('http://localhost:4000/task/getTasksDateFilteredWithMetadata')
+      setData(res.data);
     }
     getRes();
   }, []);
 
   const GenerateDeck = () => {
     if (data === "Loading!") return "Loading!"
-    else if (data?.tasks?.length) { 
-      console.log(data.tasks)
+    else if (data?.tasks?.length) {
       // (data.tasks).forEach(e => {
       //   console.log(e.isDone, e.commentCount);
       // });
