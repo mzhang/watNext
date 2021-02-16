@@ -77,7 +77,19 @@ router.get("/getTasksDateFilteredWithMetadata",passport.authenticate('jwt',{sess
 
 router.get("/getTasksDateFiltered", async (req, res)=>{
     const taskList = await Task.find({endTime: {$gte: Date.now()}}).sort({endTime: 1});
-    return res.json({tasks: taskList});
+    const outList = [];
+    const promises = taskList.map(task => new Promise(async (resolve) => {
+        task = task.toObject();
+        task.isDone = false;
+        task.commentCount = await Comment.countDocuments({task: {$eq:task._id}}).catch(err=>{res.status(400).json(err); return})
+        resolve(outList.push(task))
+    }))
+    Promise.all(promises)
+    .then((results)=>{
+        // console.log(outList.sort((a,b)=>a.endTime-b.endTime)==outList);
+        res.json({tasks: outList.sort((a,b)=>a.endTime-b.endTime)})
+    })
+    .catch((err)=>res.json({tasks: err}))
 });
 
 router.get("/getTasks", async (req, res)=>{
