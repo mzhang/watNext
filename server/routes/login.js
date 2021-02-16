@@ -54,9 +54,12 @@ router.get('/locked', passport.authenticate('jwt',{session : false}), (req, res)
     res.status(200).json({message : `Hey ${req.user.username}, you found the secret page!`});
 });
 
-router.get("/authenticated", passport.authenticate('jwt', {session:false}),(req,res)=>{
-    const username = req.user;
-    res.status(200).json({isAuthenticated : true, username : username});
+// router.get("/authenticated", passport.authenticate('jwt', {session:false}),(req,res)=>{
+//     res.status(200).json({isAuthenticated : true, user : req.user});
+// })
+
+router.get("/authenticated", (req,res)=>{
+    res.status(200).json({isAuthenticated : req.isAuthenticated, user : req.user});
 })
 
 module.exports = router;
