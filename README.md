@@ -1,4 +1,6 @@
 # watNext
-get your stuff together. maybe with others?
+Staying on track with the help of peer pressure! 
 
-something between a dating site and a todo list?
+Because struggling together is in style this year. 
+
+🐒 + 🐒 = 💪
