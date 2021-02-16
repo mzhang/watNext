@@ -1,9 +1,9 @@
 import React from 'react';
 import { Router } from '@reach/router';
-import Home from './pages/home';
-import Cards from './pages/cards'
-import CardsNoLogin from './pages/cardsNoLogin'
-import ComponentLibrary from './pages/componentLibrary'
+import Home from './pages/Home';
+import Cards from './pages/Cards'
+import CardsNoLogin from './pages/CardsNoLogin'
+import ComponentLibrary from './pages/ComponentLibrary'
 
 import axios from 'axios';
 axios.defaults.withCredentials = true
