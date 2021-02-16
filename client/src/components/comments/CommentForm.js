@@ -14,10 +14,7 @@ export default function RegisterForm(props) {
     }
 
     setComment("");
-    console.log(commentPayload);
     await axios.post('http://localhost:4000/task/addComment', commentPayload).catch(err => console.log(err))
-    
-
   }
 
   return (
