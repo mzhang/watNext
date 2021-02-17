@@ -1,13 +1,16 @@
 import TaskCard from './TaskCard.js'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../../AuthContext.js';
 
 export default function TaskDeck() { 
   const [data, setData] = useState("Loading!");
+  const { isLoggedIn } = useContext(AuthContext)
 
   useEffect(() => {
     const getRes = async () => {
-      const res = await axios.get('http://localhost:4000/task/getTasksDateFilteredWithMetadata')
+      const res = await axios.get('http://localhost:4000/task/' + 
+      (isLoggedIn ? "getTasksDateFilteredWithMetadata" : "getTasksDateFiltered"))
       setData(res.data);
     }
     getRes();
