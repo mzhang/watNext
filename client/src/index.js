@@ -23,6 +23,18 @@ axios.interceptors.response.use(response => {
         progress: undefined,
         });
    }
+
+   if (error.response.status === 400) {
+    toast.warning("🐝 Bad data submitted!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+   }
    return error;
  });
 
