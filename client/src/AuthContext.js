@@ -12,10 +12,8 @@ export default function AuthProvider({ children }) {
     const [isLoggedIn, setIsLoggedIn] = useState(null);
 
     const updateAuthStatus = () => {
-      console.log("updating auth status")
       axios.get("http://localhost:4000/user/authenticated", {validateStatus:null})
       .then(res => {
-        console.log(res.data)
         setIsLoggedIn(res.data.isAuthenticated);
         setUser(res.data.user);
       })
