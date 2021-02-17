@@ -6,7 +6,6 @@ import CommentCard from "../components/comments/CommentCard"
 import CommentForm from "../components/comments/CommentForm"
 import IsAuthenticatedButton from "../components/login/IsAuthenticatedButton"
 import ToggleCompleteButton from "../components/tasks/ToggleCompleteButton"
-import Toast from "../components/Toast"
 
 export default function Home() {
     return (
