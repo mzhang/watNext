@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import {Button, TextField, Container} from '@material-ui/core/';
+import { AuthContext } from '../../AuthContext';
 
 export default function LoginForm() { 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { updateAuthStatus } = useContext(AuthContext);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -17,12 +19,10 @@ export default function LoginForm() {
     setUsername("");
     setPassword("");
     const response = await axios.post('http://localhost:4000/user/login', credentials);
-    console.log(response);
-
+    updateAuthStatus()
   }
 
   return (
-    <Container>
         <form noValidate onSubmit={handleSubmit}>
             <div><TextField id="filled-basic" label="Username" variant="filled" 
             value={username} onChange={e => setUsername(e.target.value)}/></div>
@@ -32,7 +32,6 @@ export default function LoginForm() {
             /></div>
             <Button variant="contained" color="primary" type="submit">Login</Button>
         </form>
-    </Container>
   )
   
 }
