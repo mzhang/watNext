@@ -8,7 +8,7 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const { updateAuthStatus } = useContext(AuthContext);
 
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
 
     const credentials = {
@@ -18,8 +18,7 @@ export default function LoginForm() {
 
     setUsername("");
     setPassword("");
-    const response = await axios.post('http://localhost:4000/user/login', credentials);
-    updateAuthStatus()
+    axios.post('http://localhost:4000/user/login', credentials).then(updateAuthStatus())
   }
 
   return (
