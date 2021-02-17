@@ -4,7 +4,7 @@ import axios from 'axios';
 import { AuthContext } from '../../AuthContext.js';
 
 export default function TaskDeck() { 
-  const [data, setData] = useState("Loading!");
+  const [data, setData] = useState(null);
   const { isLoggedIn } = useContext(AuthContext)
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function TaskDeck() {
   }, []);
 
   const GenerateDeck = () => {
-    if (data === "Loading!") return "Loading!"
+    if (data === null) return "Loading!"
     else if (data?.tasks?.length) {
       // (data.tasks).forEach(e => {
       //   console.log(e.isDone, e.commentCount);
