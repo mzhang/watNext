@@ -1,19 +1,16 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../AuthContext';
+import LogoutButton from "../components/login/LogoutButton"
+import LoginForm from "../components/login/LoginForm"
 
 export default function Home() {
-    const [isLoggedIn, setIsLoggedIn] = useState(null);
-    useEffect(()=>{
-        const getLoggedInStatus = async () => {
-            const data = await axios.get("http://localhost:4000/user/authenticated")
-            setIsLoggedIn(data.status != 401) 
-        }
-        getLoggedInStatus();
-    }, [])
+    const {user, isLoggedIn} = useContext(AuthContext);
     return (
         <div>
             <h1>Home</h1>
-            {isLoggedIn === null? null : <h2>You are {isLoggedIn ? "" : "not"} logged in!</h2>}
+            {user === null ? null : <h2>{user ? `Hey ${user.username}! `:"" }You are {isLoggedIn ? "" : "not"} logged in!</h2>}
+            <LogoutButton />
+            <LoginForm />
             
         </div>
     )
