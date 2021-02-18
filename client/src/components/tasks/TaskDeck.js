@@ -14,7 +14,7 @@ export default function TaskDeck() {
       setData(res.data);
     }
     getRes();
-  });
+  }, [isLoggedIn]);
 
   const GenerateDeck = () => {
     if (data === null) return "Loading!"
