@@ -13,7 +13,7 @@ export default function TaskCard(props) {
     // },[props.isDone]);
 
     return (
-        <Card style={{width: '18rem', height:'20rem', opacity: isDone ? 0.15 : 1}}>
+        <Card style={{opacity: isDone ? 0.15 : 1}}>
             <CardContent>
                 <Typography variant="h5" component="h2">
                     {props.name}
