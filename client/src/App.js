@@ -7,13 +7,13 @@ import ComponentLibrary from './pages/ComponentLibrary'
 function App() { 
 
   return (
-    <div>
+    <>
       <Router>
         <Home path="/" />
         <Cards path="/cards" />
         <ComponentLibrary path="/componentLibrary" />
       </Router>
-    </div>
+    </>
   )
   
 }
