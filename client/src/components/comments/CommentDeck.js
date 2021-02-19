@@ -21,7 +21,6 @@ export default function CardDeck(props) {
     <div style={{
       display: "inline-flex",
       justifyContent: "center",
-      alignItems: "center",
       flexWrap: "wrap"
     }}>
       <GenerateDeck />

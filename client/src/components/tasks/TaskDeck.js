@@ -44,8 +44,7 @@ export default function TaskDeck() {
 
   return (
     <div style={{
-      display: "inline-flex",
-      alignItems: "center",
+      display: "flex",
       flexWrap: "wrap",
       justifyContent :"space-evenly"
     }}>

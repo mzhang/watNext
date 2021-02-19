@@ -3,6 +3,7 @@ import {Card, CardActions, CardContent} from "@material-ui/core/"
 import {Typography} from '@material-ui/core/';
 import TaskModal from "./TaskModal"
 import ToggleCompleteButton from "./ToggleCompleteButton"
+import taskCardStyle from "./TaskCard.module.css"
 
 export default function TaskCard(props) {
     // const [ opacity, setOpacity ] = useState(props.isDone ? 0.15 : 1);
@@ -13,28 +14,22 @@ export default function TaskCard(props) {
     // },[props.isDone]);
 
     return (
-        <Card style={{textAlign:"center", 
-        opacity: isDone ? 0.15 : 1, 
-        borderTop: "2px solid red", 
-        width: "40%", maxWidth:"200px",
-        marginTop: "5%",
-        height: "30vh", minHeight: "30vh"
-        }}>
-        <Typography variant="body2" component="p">
+        <Card className={taskCardStyle.card} style={{opacity: isDone ? 0.15 : 1}}>
+        <Typography variant="body2">
             {props.class}
         </Typography>
-        <CardContent>
-            <Typography variant="h6" component="h2">
+        <CardContent className={taskCardStyle.cardContent}>
+            <Typography >
                 {props.type.substring(0,2)}{props.name}
             </Typography>
             <Typography variant="body2" component="p">
                 {props.endTime}
             </Typography>
-            <div style={{display: "inline-flex", justifyContent: "center"}}>
-                <ToggleCompleteButton id={props.id} isDone={isDone} setIsDone={setIsDone}/>
-                <TaskModal id={props.id} commentCount={props.commentCount}/>  
-            </div>
         </CardContent>
+        <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
+            <ToggleCompleteButton id={props.id} isDone={isDone} setIsDone={setIsDone}/>
+            <TaskModal id={props.id} commentCount={props.commentCount}/>  
+        </div>
         </Card>
         
     )
