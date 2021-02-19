@@ -29,7 +29,14 @@ export default function TaskDeck() {
       name={e.name} 
       type={e.type} 
       class={e.class} 
-      endTime={new Date(e.endTime).toLocaleDateString("en-US")}
+      endTime={new Intl.DateTimeFormat('default',{
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric'
+      }).format(new Date(e.endTime))
+      }
       commentCount={e.commentCount}
       isDone={e.isDone} />) }
     else return "The grind has stopped."
@@ -38,9 +45,9 @@ export default function TaskDeck() {
   return (
     <div style={{
       display: "inline-flex",
-      justifyContent: "center",
       alignItems: "center",
-      flexWrap: "wrap"
+      flexWrap: "wrap",
+      justifyContent :"space-evenly"
     }}>
       <GenerateDeck />
     </div>

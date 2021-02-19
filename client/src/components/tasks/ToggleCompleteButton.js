@@ -1,6 +1,8 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import { IconButton } from '@material-ui/core/';
 import axios from 'axios';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
 export default function ToggleComplete(props) {
 
@@ -15,9 +17,17 @@ export default function ToggleComplete(props) {
     }
     
     if (!props.isDone) {
-        return <Button variant="contained" color="primary" onClick={() => { markAsDone() }}>Mark as Done!</Button>
+        return (
+            <IconButton color="primary" onClick={() => { markAsDone() }}>
+                <CheckBoxOutlineBlankIcon  />
+            </IconButton> 
+        )
     }
     else {
-        return <Button variant="contained" color="primary" onClick={() => { markAsUndone() }}>Mark as Undone!</Button>
+        return (
+            <IconButton color="primary" onClick={() => { markAsUndone() }}>
+                <CheckBoxIcon  />
+            </IconButton> 
+        )
     }
 }

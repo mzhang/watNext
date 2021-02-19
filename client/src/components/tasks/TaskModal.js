@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import {Modal, Fade, Backdrop, Button, Container} from '@material-ui/core/';
+import {Modal, Fade, Backdrop, Button, Container, IconButton} from '@material-ui/core/';
 // import { makeStyles } from '@material-ui/core/styles';
 import CommentDeck from '../comments/CommentDeck';
 import CommentForm from '../comments/CommentForm';
+import ChatIcon from '@material-ui/icons/Chat';
 
 export default function TaskModal(props) {
   const [open, setOpen] = useState(false);
@@ -11,21 +12,17 @@ export default function TaskModal(props) {
   const handleClose = () => {setOpen(false)};
 
   return (
-    <div>
-      <Button variant="contained" color="primary" onClick={handleOpen}>
-        Activate Modal
-      </Button>
+    <>
+      <IconButton onClick={handleOpen} color="primary"> 
+        <ChatIcon variant="contained" />{props.commentCount}
+      </IconButton>
+      
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
         open={open}
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
+        BackdropProps={{timeout: 500}}>
         <Fade in={open}>
           <Container>
             <CommentDeck id={props.id} />
@@ -33,6 +30,6 @@ export default function TaskModal(props) {
           </Container>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }

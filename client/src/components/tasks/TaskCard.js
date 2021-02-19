@@ -13,31 +13,25 @@ export default function TaskCard(props) {
     // },[props.isDone]);
 
     return (
-        <Card style={{opacity: isDone ? 0.15 : 1}}>
-            <CardContent>
-                <Typography variant="h5" component="h2">
-                    {props.name}
-                </Typography>
-                <Typography variant="body2" component="p">
-                    {props.class}
-                </Typography>
-                <Typography variant="body2" component="p">
-                    {props.type}
-                </Typography>
-                <Typography variant="body2" component="p">
-                    {props.endTime}
-                </Typography>
-                <Typography variant="body2" component="p">
-                    {props.commentCount} comments so far!
-                    <br />
-                    {props.isDone ? "You've already finished this!" : "Get this done!"}
-                </Typography>
-                <CardActions>
-                    <TaskModal id={props.id}/>
-                    <ToggleCompleteButton id={props.id} isDone={isDone} setIsDone={setIsDone}/>
-                </CardActions>
-            </CardContent>
-
+        <Card style={{textAlign:"center", 
+        opacity: isDone ? 0.15 : 1, 
+        borderTop: "2px solid red", 
+        width: "40%", maxWidth:"200px",
+        marginTop: "5%"
+        }}>
+        <Typography variant="body2" component="p">
+            {props.class}
+        </Typography>
+        <CardContent>
+            <Typography variant="h6" component="h2">
+                {props.type.substring(0,2)}{props.name}
+            </Typography>
+            <Typography variant="body2" component="p">
+                {props.endTime}
+            </Typography>
+            <ToggleCompleteButton id={props.id} isDone={isDone} setIsDone={setIsDone}/>
+            <TaskModal id={props.id}/> 
+        </CardContent>
         </Card>
         
     )
