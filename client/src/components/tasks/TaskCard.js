@@ -18,7 +18,7 @@ export default function TaskCard(props) {
         <Typography variant="body2">
             {props.class}
         </Typography>
-        <CardContent className={taskCardStyle.cardContent}>
+        <CardContent >
             <Typography >
                 {props.type.substring(0,2)}{props.name}
             </Typography>
