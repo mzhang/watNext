@@ -19,10 +19,10 @@ export default function TaskCard(props) {
             {props.class}
         </Typography>
         <CardContent >
-            <Typography >
+            <Typography variant="h6">
                 {props.type.substring(0,2)}{props.name}
             </Typography>
-            <Typography variant="body2" component="p">
+            <Typography variant="body2">
                 {props.endTime}
             </Typography>
         </CardContent>

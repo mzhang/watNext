@@ -46,7 +46,7 @@ export default function TaskDeck() {
     <div style={{
       display: "flex",
       flexWrap: "wrap",
-      justifyContent :"space-evenly"
+      justifyContent :"space-evenly",
     }}>
       <GenerateDeck />
     </div>
