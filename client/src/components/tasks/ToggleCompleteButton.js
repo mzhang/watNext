@@ -19,14 +19,14 @@ export default function ToggleComplete(props) {
     if (!props.isDone) {
         return (
             <IconButton color="primary" onClick={() => { markAsDone() }}>
-                <CheckBoxOutlineBlankIcon  />
+                🎉
             </IconButton> 
         )
     }
     else {
         return (
             <IconButton color="primary" onClick={() => { markAsUndone() }}>
-                <CheckBoxIcon  />
+                🎉
             </IconButton> 
         )
     }

@@ -14,7 +14,7 @@ export default function TaskModal(props) {
   return (
     <>
       <IconButton onClick={handleOpen} color="primary"> 
-        <ChatIcon variant="contained" />{props.commentCount}
+        {props.commentCount ? "💬" : "🗨️"}       
       </IconButton>
       
       <Modal

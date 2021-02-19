@@ -6,19 +6,18 @@ import TaskDeck from '../components/tasks/TaskDeck'
 export default function Home() {
     const {user, isLoggedIn} = useContext(AuthContext);
     return (
-        <div>
+        <>
             <h1>Home</h1>
             {user === null ? null : <h2>{user ? `Hey ${user.username}! `:"" }You are {isLoggedIn ? "" : "not"} logged in!</h2>}
             <LogoutButton />
             <LoginForm />
-            <div style={{
+            <TaskDeck style={{
                 display: "inline-flex",
                 justifyContent: "center",
                 alignItems: "center",
                 flexWrap: "wrap"
-            }}>
-                <TaskDeck />
-            </div>
-        </div>
+            }}/>
+
+        </>
     )
 }

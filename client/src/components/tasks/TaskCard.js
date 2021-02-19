@@ -17,7 +17,8 @@ export default function TaskCard(props) {
         opacity: isDone ? 0.15 : 1, 
         borderTop: "2px solid red", 
         width: "40%", maxWidth:"200px",
-        marginTop: "5%"
+        marginTop: "5%",
+        height: "30vh", minHeight: "30vh"
         }}>
         <Typography variant="body2" component="p">
             {props.class}
@@ -29,8 +30,10 @@ export default function TaskCard(props) {
             <Typography variant="body2" component="p">
                 {props.endTime}
             </Typography>
-            <ToggleCompleteButton id={props.id} isDone={isDone} setIsDone={setIsDone}/>
-            <TaskModal id={props.id}/> 
+            <div style={{display: "inline-flex", justifyContent: "center"}}>
+                <ToggleCompleteButton id={props.id} isDone={isDone} setIsDone={setIsDone}/>
+                <TaskModal id={props.id} commentCount={props.commentCount}/>  
+            </div>
         </CardContent>
         </Card>
         
