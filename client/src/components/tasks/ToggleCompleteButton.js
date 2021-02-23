@@ -1,8 +1,6 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core/';
 import axios from 'axios';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
 export default function ToggleComplete(props) {
 

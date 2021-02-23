@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Card, CardActions, CardContent} from "@material-ui/core/"
+import {Card, CardContent} from "@material-ui/core/"
 import {Typography} from '@material-ui/core/';
 import TaskModal from "./TaskModal"
 import ToggleCompleteButton from "./ToggleCompleteButton"
