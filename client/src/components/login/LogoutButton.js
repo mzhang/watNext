@@ -10,6 +10,6 @@ export default function LogoutButton() {
         updateAuthStatus()
     }
     return (
-        <Button variant="contained" color="primary" onClick={() => { logout() }}>Logout</Button>
+        <Button variant="contained" color="secondary" onClick={() => { logout() }}>Logout</Button>
     )
 }
