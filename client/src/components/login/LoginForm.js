@@ -22,14 +22,20 @@ export default function LoginForm() {
   }
 
   return (
-        <form noValidate onSubmit={handleSubmit}>
-            <div><TextField id="filled-basic" label="Username" variant="filled" 
-            value={username} onChange={e => setUsername(e.target.value)}/></div>
-            <div><TextField id="filled-password-input" label="Password"
-                type="password" autoComplete="current-password" variant="filled"
-                value={password} onChange={e => setPassword(e.target.value)}
-            /></div>
-            <Button variant="contained" color="primary" type="submit">Login</Button>
+        <form noValidate onSubmit={handleSubmit} style={{display:"grid",maxWidth:"200px"}}>
+
+            <TextField 
+              id="filled-basic" label="Username" variant="filled" 
+              value={username} onChange={e => setUsername(e.target.value)}
+            />
+
+            <TextField 
+              id="filled-password-input" label="Password"
+              type="password" autoComplete="current-password" variant="filled"
+              value={password} onChange={e => setPassword(e.target.value)}
+            /> 
+
+            <Button variant="contained" color="secondary" type="submit">Login</Button>
         </form>
   )
   
