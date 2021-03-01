@@ -18,7 +18,7 @@ export default function LoginForm() {
 
     setUsername("");
     setPassword("");
-    axios.post('http://localhost:4000/user/login', credentials).then(updateAuthStatus())
+    axios.post('http://localhost:4000/user/login', credentials).then(() => {updateAuthStatus()})
   }
 
   return (
