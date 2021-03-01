@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Fade, Backdrop, Container, Button } from '@material-ui/core/';
+import { Dialog, Fade, Backdrop, Container, Button } from '@material-ui/core/';
 // import { makeStyles } from '@material-ui/core/styles';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
@@ -15,23 +15,10 @@ export default function TaskModal(props) {
       
       <Button onClick={handleOpen} variant="contained" color="secondary">Login</Button>
       
-      <Modal
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{timeout: 500}}
-      >
-        <Fade in={open}>
-          <div 
-        style={{display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'}}>
+      <Dialog open={open} onClose={handleClose}>
             <LoginForm />
             <RegisterForm />
-          </div>
-        </Fade>
-      </Modal>
+      </Dialog>
     </>
   );
 }

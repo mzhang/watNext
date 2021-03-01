@@ -22,7 +22,7 @@ export default function LoginForm() {
   }
 
   return (
-        <form noValidate onSubmit={handleSubmit} style={{display:"grid",maxWidth:"200px"}}>
+        <form noValidate onSubmit={handleSubmit} style={{display:"grid",maxWidth:"200px",margin:"5%"}}>
 
             <TextField
               id="filled-basic" label="Username" variant="filled"
