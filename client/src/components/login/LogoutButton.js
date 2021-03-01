@@ -6,7 +6,7 @@ import { AuthContext } from '../../AuthContext';
 export default function LogoutButton() {
     const { updateAuthStatus } = useContext(AuthContext);
     const logout = async () => {
-        await axios.get('http://localhost:4000/user/logout')
+        await axios.get('/api/user/logout')
         updateAuthStatus()
     }
     return (

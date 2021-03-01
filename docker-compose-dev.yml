@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: watNext_api
+    hostname: watNext_api
+    build:
+      context: ./server
+    command: nodemon -L index.js
+    volumes:
+      - ./server:/usr/src/server
+      - /usr/src/server/node_modules
+    expose:
+      - "4000"
+
+  client_dev:
+    container_name: watNext_client
+    hostname: watNext_client
+    build:
+      context: ./client
+    command: npm start
+    volumes:
+      - ./client:/usr/src/client
+      - /usr/src/client/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true # ensures that changes to file are reflected upon reload
+    expose:
+      - "3000"
+    depends_on:
+      - api
+
+  nginx:
+    container_name: watNext_nginx
+    build:
+      context: ./nginx
+    ports:
+      - "1337:80"
+    depends_on:
+      - api
+      - client_dev

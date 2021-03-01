@@ -2,11 +2,11 @@ import CommentCard from './CommentCard'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function CardDeck(props) { 
+export default function CardDeck(props) {
   const [data, setData] = useState("Loading!");
 
   useEffect(()=>{
-      axios.get("http://localhost:4000/task/getComments/"+props.id)
+      axios.get("/api/task/getComments/"+props.id)
     .then((data) => {console.log(data);setData(data)})
     .catch((err) => setData(err))
   },[props.id])
