@@ -21,9 +21,13 @@ export default function TaskModal(props) {
         onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
-        BackdropProps={{timeout: 500}}>
+        BackdropProps={{timeout: 500}}
+      >
         <Fade in={open}>
-          <Container>
+          <Container 
+        style={{display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'}}>
             <CommentDeck id={props.id} />
             <CommentForm id={props.id} />
           </Container>
