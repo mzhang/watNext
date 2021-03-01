@@ -2,6 +2,7 @@ import TaskCard from './TaskCard.js'
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../AuthContext.js';
+import { Container } from '@material-ui/core';
 
 export default function TaskDeck() { 
   const [data, setData] = useState(null);
@@ -43,12 +44,13 @@ export default function TaskDeck() {
   }
 
   return (
-    <div style={{
+    <Container style={{
       display: "flex",
       flexWrap: "wrap",
       justifyContent :"space-evenly",
+      maxWidth: "900px"
     }}>
       <GenerateDeck />
-    </div>
+    </Container>
   );
 }
