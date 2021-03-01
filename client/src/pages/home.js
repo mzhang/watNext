@@ -11,7 +11,6 @@ export default function Home() {
             {/* <h1>Home</h1>
             {user === null ? null : <h2>{user ? `Hey ${user.username}! `:"" }You are {isLoggedIn ? "" : "not"} logged in!</h2>}
             <LogoutButton /> */}
-            <LoginForm />
             <TaskDeck style={{
                 display: "inline-flex",
                 justifyContent: "center",
