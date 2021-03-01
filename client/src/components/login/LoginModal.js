@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Modal, Fade, Backdrop, Container, Button} from '@material-ui/core/';
+import { Modal, Fade, Backdrop, Container, Button } from '@material-ui/core/';
 // import { makeStyles } from '@material-ui/core/styles';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
@@ -23,13 +23,13 @@ export default function TaskModal(props) {
         BackdropProps={{timeout: 500}}
       >
         <Fade in={open}>
-          <Container 
+          <div 
         style={{display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'}}>
             <LoginForm />
             <RegisterForm />
-          </Container>
+          </div>
         </Fade>
       </Modal>
     </>

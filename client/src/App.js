@@ -25,7 +25,6 @@ function App() {
 
   return (
     <MuiThemeProvider theme={theme}>
-
       <Navbar />
       <Router>
         <Home path="/" />
