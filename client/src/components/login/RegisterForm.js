@@ -34,7 +34,7 @@ export default function RegisterForm() {
               type="password" autoComplete="current-password" variant="filled"
               value={password} onChange={e => setPassword(e.target.value)}
             />
-            <Button variant="contained" color="primary" type="submit">Register</Button>
+            <Button variant="contained" color="secondary" type="submit">Register</Button>
         </form>
     </Container>
   )
