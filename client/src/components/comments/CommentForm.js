@@ -18,8 +18,7 @@ export default function RegisterForm(props) {
   }
 
   return (
-      <Container>
-        <form noValidate onSubmit={handleSubmit} style={{display:"grid",maxWidth:"200px"}}> 
+        <form noValidate onSubmit={handleSubmit} style={{display:"grid", padding: "5%"}}> 
             <TextField
               id="filled-multiline-static"
               label="Cool comment goes here!"
@@ -32,7 +31,6 @@ export default function RegisterForm(props) {
             />
             <Button variant="contained" color="primary" type="submit">Post Comment</Button>
         </form>
-    </Container>
   )
   
 }

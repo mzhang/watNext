@@ -21,9 +21,8 @@ export default function TaskModal(props) {
         onClose={handleClose}
         scroll="body"
       >
-            <CommentDeck id={props.id} />
-            <CommentForm id={props.id} />
-            
+          <CommentDeck id={props.id} />
+          <CommentForm id={props.id} />
       </Dialog>
     </>
   );

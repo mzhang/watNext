@@ -21,7 +21,8 @@ export default function CardDeck(props) {
     <div style={{
       display: "flex",
       justifyContent: "center",
-      flexWrap: "wrap"
+      flexWrap: "wrap",
+      margin:"5%"
     }}>
       <GenerateDeck />
     </div>
