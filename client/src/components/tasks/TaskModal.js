@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
-import {Dialog, Fade, Backdrop, Container, IconButton} from '@material-ui/core/';
-// import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import {Dialog, IconButton} from '@material-ui/core/';
 import CommentDeck from '../comments/CommentDeck';
 import CommentForm from '../comments/CommentForm';
 
@@ -13,7 +12,7 @@ export default function TaskModal(props) {
   return (
     <>
       <IconButton onClick={handleOpen} color="primary"> 
-        {props.commentCount ? "💬" : "🗨️"}       
+        {props.commentCount ? "💬" : "🗨️"} 
       </IconButton>
       
       <Dialog open={open} onClose={handleClose} scroll="body">

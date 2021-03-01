@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Dialog, Fade, Backdrop, Container, Button } from '@material-ui/core/';
-// import { makeStyles } from '@material-ui/core/styles';
+import { Dialog, Button } from '@material-ui/core/';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 

@@ -9,7 +9,7 @@ import { AuthContext } from "../../AuthContext.js"
 export default function TaskCard(props) {
     // const [ opacity, setOpacity ] = useState(props.isDone ? 0.15 : 1);
     const [isDone, setIsDone] = useState(props.isDone);
-    const { user, isLoggedIn } = useContext(AuthContext);
+    const { isLoggedIn } = useContext(AuthContext);
 
 
     // useEffect(() => {

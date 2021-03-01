@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
-import {Button, TextField, Container} from '@material-ui/core/';
+import {Button, TextField} from '@material-ui/core/';
 import { AuthContext } from '../../AuthContext';
 
 export default function RegisterForm(props) { 
