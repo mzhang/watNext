@@ -23,8 +23,7 @@ export default function RegisterForm() {
   }
 
   return (
-      <Container>
-        <form noValidate onSubmit={handleSubmit} style={{display:"grid",maxWidth:"200px"}}>
+        <form noValidate onSubmit={handleSubmit} style={{display:"grid",maxWidth:"200px",margin:"5%"}}>
             <TextField 
               id="filled-basic" label="Username" variant="filled" 
               value={username} onChange={e => setUsername(e.target.value)}
@@ -36,7 +35,6 @@ export default function RegisterForm() {
             />
             <Button variant="contained" color="secondary" type="submit">Register</Button>
         </form>
-    </Container>
   )
   
 }

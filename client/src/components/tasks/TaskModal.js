@@ -16,11 +16,7 @@ export default function TaskModal(props) {
         {props.commentCount ? "💬" : "🗨️"}       
       </IconButton>
       
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        scroll="body"
-      >
+      <Dialog open={open} onClose={handleClose} scroll="body">
           <CommentDeck id={props.id} />
           <CommentForm id={props.id} />
       </Dialog>
