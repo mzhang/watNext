@@ -28,8 +28,8 @@ function App() {
       <Navbar />
       <Router>
         <Home path="/" />
-        <Cards path="/cards" />
-        <ComponentLibrary path="/componentLibrary" />
+        <Cards path="/Cards" />
+        <ComponentLibrary path="/ComponentLibrary" />
       </Router>
     </MuiThemeProvider>
   )
