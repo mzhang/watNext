@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Button, TextField } from '@material-ui/core/';
 import { AuthContext } from '../../AuthContext';
 
-export default function LoginForm() { 
+export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { updateAuthStatus } = useContext(AuthContext);
@@ -18,25 +18,25 @@ export default function LoginForm() {
 
     setUsername("");
     setPassword("");
-    axios.post('http://localhost:4000/user/login', credentials).then(() => {updateAuthStatus()})
+    axios.post('/api/user/login', credentials).then(() => {updateAuthStatus()})
   }
 
   return (
         <form noValidate onSubmit={handleSubmit} style={{display:"grid",maxWidth:"200px",margin:"5%"}}>
 
-            <TextField 
-              id="filled-basic" label="Username" variant="filled" 
+            <TextField
+              id="filled-basic" label="Username" variant="filled"
               value={username} onChange={e => setUsername(e.target.value)}
             />
 
-            <TextField 
+            <TextField
               id="filled-password-input" label="Password"
               type="password" autoComplete="current-password" variant="filled"
               value={password} onChange={e => setPassword(e.target.value)}
-            /> 
+            />
 
             <Button variant="contained" color="secondary" type="submit">Login</Button>
         </form>
   )
-  
+
 }
