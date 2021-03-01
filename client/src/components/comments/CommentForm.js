@@ -19,19 +19,17 @@ export default function RegisterForm(props) {
 
   return (
       <Container>
-        <form noValidate onSubmit={handleSubmit}>
-            <div>
-                <TextField
-            id="filled-multiline-static"
-            label="Cool comment goes here!"
-            multiline
-            rows={4}
-            
-            variant="filled"
-            value={comment}
-            onChange={e => setComment(e.target.value)}
+        <form noValidate onSubmit={handleSubmit} style={{display:"grid",maxWidth:"200px"}}> 
+            <TextField
+              id="filled-multiline-static"
+              label="Cool comment goes here!"
+              multiline
+              rows={4}
+              
+              variant="filled"
+              value={comment}
+              onChange={e => setComment(e.target.value)}
             />
-            </div>
             <Button variant="contained" color="primary" type="submit">Post Comment</Button>
         </form>
     </Container>

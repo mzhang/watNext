@@ -7,11 +7,10 @@ import Typography from '@material-ui/core/Typography';
 export default function CommentCard(props) {
     return (
         <Card style={{ width: '18rem', 
-            display: "inline-flex",
+            display: "flex",
             justifyContent: "center",
-            alignItems: "center",
             textAlign: "center",
-            flexWrap: "wrap"
+            flexWrap: "wrap",
           }}>
             <CardContent>
                 <Typography variant="h5" component="h2">

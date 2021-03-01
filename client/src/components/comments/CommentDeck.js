@@ -19,7 +19,7 @@ export default function CardDeck(props) {
 
   return (
     <div style={{
-      display: "inline-flex",
+      display: "flex",
       justifyContent: "center",
       flexWrap: "wrap"
     }}>
