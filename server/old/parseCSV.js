@@ -1,27 +1,27 @@
-function getJSON(filepath) {
-    const fs = require('fs');
-    const csv = fs.readFileSync(filepath,{encoding:'utf8', flag:'r'});
-    const rows = csv.split('\r\n');
+function getJSON (filepath) {
+  const fs = require('fs')
+  const csv = fs.readFileSync(filepath, { encoding: 'utf8', flag: 'r' })
+  const rows = csv.split('\r\n')
 
-    const out = [];
+  const out = []
 
-    rows.forEach((element) => {
-        splitRow = element.split(",")
-        out.push({
-            class: splitRow[1],
-            name: splitRow[0],
-            type: splitRow[3],
-            endTime: new Date(splitRow[2]).getTime()
-        })
+  rows.forEach((element) => {
+    splitRow = element.split(',')
+    out.push({
+      class: splitRow[1],
+      name: splitRow[0],
+      type: splitRow[3],
+      endTime: new Date(splitRow[2]).getTime(),
     })
+  })
 
-    out.pop()
-    out.pop()
+  out.pop()
+  out.pop()
 
-    return out
+  return out
 
 }
 
-module.exports = getJSON;
+module.exports = getJSON
 
 // fs.writeFileSync("./1BDates.json", JSON.stringify(out,null, 4));
