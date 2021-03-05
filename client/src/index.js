@@ -9,9 +9,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
 
 axios.defaults.withCredentials = true
-axios.interceptors.response.use(response => {
-  return response
-}, error => {
+axios.interceptors.response.use(response => response, 
+  error => {
   if (error.response.status === 401) {
     toast.error('👮 You\'re unauthorized!', {
       position: 'top-center',
