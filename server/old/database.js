@@ -1,7 +1,8 @@
 const csvParser = require('./parseCSV.js')
+require('dotenv').config()
 
 const MongoClient = require('mongodb').MongoClient
-const uri = 'mongodb+srv://matt:matt@cluster0.o24bv.mongodb.net/1b?retryWrites=true&w=majority'
+const uri = process.env.MONGO_URL
 const client = new MongoClient(uri, { useNewUrlParser: true })
 client.connect(err => {
   const collection = client.db('1b').collection('tasks')
