@@ -7,22 +7,20 @@ const cookieParser = require('cookie-parser')
 const loginRoutes = require('./routes/login')
 const taskActions = require('./routes/taskActions')
 
-var corsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
-}
+
+const port = 4000
 
 const app = express()
 app.use(express.json())
-app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use('/user', loginRoutes)
 app.use('/task', taskActions)
 
 mongoose.connect(process.env.MONGO_URL,
   { useNewUrlParser: true, useUnifiedTopology: true })
+  .catch((err) => {console.log(err)})
 
 const db = mongoose.connection
-db.once('open', () => console.log('we\'re in.'))
+db.once('open', () => console.log('Successfully connected to DB.'))
 
-app.listen(4000, () => console.log(`We're live!`))
+app.listen(port, () => console.log(`${new Date().toLocaleString('en-US')}: App is listening at ${port}`))

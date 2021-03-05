@@ -12,7 +12,7 @@ const Comment = require('../schema/CommentSchema')
 const { ObjectID } = require('mongodb')
 
 router.post('/addComment', passport.authenticate('jwt', { session: false }),
-  async (req, res) => {
+  (req, res) => {
     const { task, comment } = req.body
 
     const newComment = new Comment({
@@ -21,11 +21,14 @@ router.post('/addComment', passport.authenticate('jwt', { session: false }),
       commentContent: comment,
     })
 
-    await newComment.save().catch(err => {
-      res.status(400).json(err)
-      return
-    })
-    return res.status(200).json({ message: 'Comment saved!', comment: comment })
+    newComment.save()
+      .then(() => {
+        res.status(200)
+          .json({ message: 'Comment saved!', comment: comment })
+      })
+      .catch(err => {
+        res.status(400).json(err)
+      })
   })
 
 router.post('/markAsDone/:taskID',

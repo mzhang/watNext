@@ -14,7 +14,7 @@ const signToken = userID => {
   return jwt.sign({
     iss: 'matt',
     sub: userID,
-  }, 'matt', { expiresIn: '144h' })
+  }, process.env.JWT_KEY, { expiresIn: '144h' })
 }
 
 router.post('/register', async (req, res) => {
