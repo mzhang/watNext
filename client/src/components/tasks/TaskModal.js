@@ -11,7 +11,7 @@ export default function TaskModal (props) {
   return (
     <>
       <IconButton onClick={handleOpen} color="primary">
-        {props.commentCount === 0 ? '💬' : '🗨️'}
+        {props.commentCount === 0 ? '🗨️' : '💬'}
       </IconButton>
 
       <Dialog open={isOpen} onClose={handleClose} scroll="body">
