@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router } from '@reach/router';
-import Home from './pages/home';
-import Cards from './pages/cards'
-import ComponentLibrary from './pages/componentLibrary'
+import Home from './pages/Home';
+import Cards from './pages/Cards'
+import ComponentLibrary from './pages/ComponentLibrary'
 import Navbar from './components/Navbar'
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';

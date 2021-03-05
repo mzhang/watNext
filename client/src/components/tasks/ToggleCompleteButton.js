@@ -1,12 +1,14 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core/';
 import axios from 'axios';
+import Reward from 'react-rewards';
 
 export default function ToggleComplete(props) {
 
     const markAsDone = async () => {
         await axios.post('/api/task/markAsDone/' + props.id)
         props.setIsDone(true)
+        
     }
 
     const markAsUndone = async () => {
@@ -16,9 +18,9 @@ export default function ToggleComplete(props) {
 
     if (!props.isDone) {
         return (
-            <IconButton color="primary" onClick={() => { markAsDone() }}>
-                🎉
-            </IconButton>
+                <IconButton color="primary" onClick={() => { markAsDone() }}>           
+                    🎉
+                </IconButton>
         )
     }
     else {
