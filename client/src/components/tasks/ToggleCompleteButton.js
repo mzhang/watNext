@@ -1,14 +1,16 @@
-import React from 'react';
-import { IconButton } from '@material-ui/core/';
-import axios from 'axios';
-import Reward from 'react-rewards';
+import { useRef } from 'react'
+import { IconButton } from '@material-ui/core/'
+import axios from 'axios'
+import Reward from 'react-rewards'
 
-export default function ToggleComplete(props) {
+export default function ToggleComplete (props) {
+    const rewardElement = useRef(null)
 
     const markAsDone = async () => {
         await axios.post('/api/task/markAsDone/' + props.id)
+        rewardElement.current.rewardMe()
         props.setIsDone(true)
-        
+
     }
 
     const markAsUndone = async () => {
@@ -16,18 +18,19 @@ export default function ToggleComplete(props) {
         props.setIsDone(false)
     }
 
-    if (!props.isDone) {
-        return (
-                <IconButton color="primary" onClick={() => { markAsDone() }}>           
-                    🎉
-                </IconButton>
-        )
-    }
-    else {
-        return (
-            <IconButton color="primary" onClick={() => { markAsUndone() }}>
+    return (
+        <Reward
+            ref={rewardElement}
+            type={'confetti'}
+        >
+            <IconButton
+                color="primary"
+                onClick={props.isDone
+                    ? () => { markAsUndone() }
+                    : () => { markAsDone() }}
+            >
                 🎉
             </IconButton>
-        )
-    }
+        </Reward>
+    )
 }
