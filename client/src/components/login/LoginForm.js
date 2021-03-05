@@ -1,14 +1,15 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import axios from 'axios'
-import { Button, TextField } from '@material-ui/core/'
+import { Button, TextField } from '@material-ui/core'
+
 import { AuthContext } from '../../AuthContext'
 
 export default function LoginForm () {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const { updateAuthStatus } = useContext(AuthContext)
+  const { refreshAuthStatus } = useContext(AuthContext)
 
-  function handleSubmit (event) {
+  const handleSubmit = event => {
     event.preventDefault()
 
     const credentials = {
@@ -19,7 +20,7 @@ export default function LoginForm () {
     setUsername('')
     setPassword('')
     axios.post('/api/user/login', credentials)
-      .then(() => {updateAuthStatus()})
+      .then(() => {refreshAuthStatus()})
   }
 
   return (

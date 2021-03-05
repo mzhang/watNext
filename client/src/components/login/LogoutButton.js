@@ -1,16 +1,18 @@
 import { useContext } from 'react'
-import Button from '@material-ui/core/Button'
+import { Button } from '@material-ui/core'
 import axios from 'axios'
+
 import { AuthContext } from '../../AuthContext'
 
 export default function LogoutButton () {
-  const { updateAuthStatus } = useContext(AuthContext)
+  const { refreshAuthStatus } = useContext(AuthContext)
   const logout = async () => {
     await axios.get('/api/user/logout')
-    updateAuthStatus()
+    refreshAuthStatus()
   }
+
   return (
     <Button variant="contained" color="secondary"
-            onClick={() => { logout() }}>Logout</Button>
+            onClick={logout}>Logout</Button>
   )
 }

@@ -1,21 +1,20 @@
 import { useState } from 'react'
-import { Dialog, Button } from '@material-ui/core/'
+import { Dialog, Button } from '@material-ui/core'
 import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 
 export default function TaskModal () {
-  const [open, setOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
-  const handleOpen = () => {setOpen(true)}
-  const handleClose = () => {setOpen(false)}
+  const handleOpen = () => {setIsOpen(true)}
+  const handleClose = () => {setIsOpen(false)}
 
   return (
     <>
-
       <Button onClick={handleOpen} variant="contained"
               color="secondary">Login</Button>
 
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={isOpen} onClose={handleClose}>
         <LoginForm/>
         <RegisterForm/>
       </Dialog>

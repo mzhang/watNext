@@ -1,25 +1,29 @@
-import CommentCard from './CommentCard'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+import CommentCard from './CommentCard'
+
 export default function CardDeck (props) {
-  const [data, setData] = useState('Loading!')
+  const [commentCardData, setCommentCardData] = useState(null)
 
   useEffect(() => {
     axios.get('/api/task/getComments/' + props.id)
-      .then((data) => {
-        console.log(data)
-        setData(data)
+      .then((res) => {
+        setCommentCardData(res.data)
       })
-      .catch((err) => setData(err))
   }, [props.id])
 
-  const GenerateDeck = () => {
-    if (data === 'Loading!') return 'Loading!'
-    else if (data?.data?.comment.length) return (data.data.comment).map(
-      e => <CommentCard user={e.user} commentContent={e.commentContent}/>)
-    else return <CommentCard user={'No comments here!'}
-                             commentContent={'Maybe write one?'}/>
+  const generateCommentDeck = () => {
+    if (!commentCardData) {
+      return 'Loading!'
+    } else if (!commentCardData?.comment.length) {
+      return <CommentCard user={'No comments here!'}
+                          commentContent={'Maybe write one?'}/>
+    } else if (commentCardData?.comment.length) {
+      return commentCardData.data.comment.map(
+        comment => <CommentCard user={comment.user}
+                                commentContent={comment.commentContent}/>)
+    }
   }
 
   return (
@@ -29,7 +33,7 @@ export default function CardDeck (props) {
       flexWrap: 'wrap',
       margin: '5%',
     }}>
-      <GenerateDeck/>
+      {generateCommentDeck()}
     </div>
   )
 }

@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import axios from 'axios'
-import { Button, TextField } from '@material-ui/core/'
+import { Button, TextField } from '@material-ui/core'
+
 import { AuthContext } from '../../AuthContext'
 
-export default function RegisterForm (props) {
+export default function CommentForm (props) {
   const [comment, setComment] = useState('')
   const { isLoggedIn } = useContext(AuthContext)
 
@@ -17,13 +18,12 @@ export default function RegisterForm (props) {
 
     setComment('')
     await axios.post('/api/task/addComment', commentPayload)
-      .catch(err => console.log(err))
   }
 
   const submitButton = <Button variant="contained" color="primary"
                                type="submit">Post Comment</Button>
-  const disabledButton = <Button variant="contained" disabled>Log in to
-    comment!</Button>
+  const disabledButton = <Button variant="contained" disabled>
+    Log in to comment!</Button>
 
   return (
     <form noValidate onSubmit={handleSubmit}
@@ -33,7 +33,6 @@ export default function RegisterForm (props) {
         label="Cool comment goes here!"
         multiline
         rows={4}
-
         variant="filled"
         value={comment}
         onChange={e => setComment(e.target.value)}

@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { Button, TextField } from '@material-ui/core/'
+import { Button, TextField } from '@material-ui/core'
 
 export default function RegisterForm () {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  async function handleSubmit (event) {
+  const handleSubmit = async event => {
     event.preventDefault()
 
-    const registered = {
+    const registerPayload = {
       username: username,
       password: password,
     }
@@ -17,14 +17,15 @@ export default function RegisterForm () {
     setUsername('')
     setPassword('')
 
-    const response = await axios.post('/api/user/register', registered)
-    console.log(response)
-
+    await axios.post('/api/user/register', registerPayload)
   }
 
   return (
-    <form noValidate onSubmit={handleSubmit}
-          style={{ display: 'grid', maxWidth: '200px', margin: '5%' }}>
+    <form
+      noValidate
+      onSubmit={handleSubmit}
+      style={{ display: 'grid', maxWidth: '200px', margin: '5%' }}>
+
       <TextField
         id="filled-basic" label="Username" variant="filled"
         value={username} onChange={e => setUsername(e.target.value)}

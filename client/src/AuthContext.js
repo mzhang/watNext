@@ -1,17 +1,17 @@
-import React, { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import axios from 'axios'
 
 export const AuthContext = createContext({
   user: undefined,
   isLoggedIn: false,
-  updateAuthStatus: () => {},
+  refreshAuthStatus: () => {},
 })
 
 export default function AuthProvider ({ children }) {
   const [user, setUser] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(null)
 
-  const updateAuthStatus = () => {
+  const refreshAuthStatus = () => {
     axios.get('/api/user/authenticated', { validateStatus: null })
       .then(res => {
         setIsLoggedIn(res.data.isAuthenticated)
@@ -21,14 +21,14 @@ export default function AuthProvider ({ children }) {
   }
 
   useEffect(() => {
-    updateAuthStatus()
+    refreshAuthStatus()
   }, [])
 
   return (
     <AuthContext.Provider value={{
       user: user,
       isLoggedIn: isLoggedIn,
-      updateAuthStatus: updateAuthStatus,
+      refreshAuthStatus: refreshAuthStatus,
     }}>
       {children}
     </AuthContext.Provider>
