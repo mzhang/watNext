@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import CommentCard from './CommentCard'
 
-export default function CardDeck (props) {
+export default function CommentDeck (props) {
   const [commentCardData, setCommentCardData] = useState(null)
 
   useEffect(() => {
@@ -20,9 +20,11 @@ export default function CardDeck (props) {
       return <CommentCard user={'No comments here!'}
                           commentContent={'Maybe write one?'}/>
     } else if (commentCardData?.comment.length) {
-      return commentCardData.data.comment.map(
+      return commentCardData.comment.map(
         comment => <CommentCard user={comment.user}
-                                commentContent={comment.commentContent}/>)
+                                commentContent={comment.commentContent}
+                                key={comment._id}
+        />)
     }
   }
 
