@@ -30,12 +30,18 @@ export default function TaskDeck () {
       })
     }
 
+    const setTaskIsDone = (taskID) => newTaskIsDone => {
+        const temp = {...data}
+        temp.tasks.find(task => task._id == taskID).isDone = newTaskIsDone
+        setData(temp)
+    }
+
     if (data === null) {
       return <CircularProgress style={{marginTop:"15%"}}/>
     } else if (!data?.tasks?.length) {
       return 'The grind has stopped.'
     } else {
-      return data.tasks.map(task =>
+      return data.tasks.map(task => 
         <TaskCard
           id={task._id}
           key={task._id}
@@ -44,7 +50,9 @@ export default function TaskDeck () {
           class={task.class}
           endTime={createDateFormat().format(new Date(task.endTime))}
           commentCount={task.commentCount}
-          isDone={task.isDone}/>)
+          isDone={task.isDone}
+          setIsDone={setTaskIsDone(task._id)}
+          />)
     }
   }
 

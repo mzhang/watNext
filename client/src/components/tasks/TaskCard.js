@@ -7,7 +7,6 @@ import taskCardStyle from "./TaskCard.module.css";
 import { AuthContext } from "../../AuthContext.js";
 
 export default function TaskCard(props) {
-  const [isDone, setIsDone] = useState(props.isDone);
   const { isLoggedIn } = useContext(AuthContext);
 
   const getEmojiFrom = (str) => str.substring(0, 2);
@@ -31,7 +30,8 @@ export default function TaskCard(props) {
     <Card
       className={taskCardStyle.card}
       style={{
-        opacity: isDone ? 0.15 : 1,
+        opacity: props.isDone ? 0.15 : 1,
+        transition: "opacity 1s",
         borderTop: "2px solid #" + intToRGB(hashCode(props.class)),
       }}
     >
@@ -55,8 +55,8 @@ export default function TaskCard(props) {
         {isLoggedIn && (
           <ToggleCompleteButton
             id={props.id}
-            isDone={isDone}
-            setIsDone={setIsDone}
+            isDone={props.isDone}
+            setIsDone={props.setIsDone}
           />
         )}
 

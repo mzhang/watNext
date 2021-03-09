@@ -23,6 +23,9 @@ export default function ToggleComplete (props) {
     <Reward
       ref={rewardElement}
       type={'confetti'}
+      config={{
+        "springAnimation" : false
+      }}
     >
       <IconButton
         color="primary"
