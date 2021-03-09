@@ -18,6 +18,7 @@ export default function CommentForm (props) {
 
     setComment('')
     await axios.post('/api/task/addComment', commentPayload)
+    props.getNewComments()
   }
 
   const submitButton = <Button variant="contained" color="primary"
