@@ -1,62 +1,67 @@
-import { useState, useContext } from 'react'
-import { Card, CardContent, Typography } from '@material-ui/core'
+import { useState, useContext } from "react";
+import { Card, CardContent, Typography } from "@material-ui/core";
 
-import TaskModal from './TaskModal'
-import ToggleCompleteButton from './ToggleCompleteButton'
-import taskCardStyle from './TaskCard.module.css'
-import { AuthContext } from '../../AuthContext.js'
+import TaskModal from "./TaskModal";
+import ToggleCompleteButton from "./ToggleCompleteButton";
+import taskCardStyle from "./TaskCard.module.css";
+import { AuthContext } from "../../AuthContext.js";
 
-export default function TaskCard (props) {
-  const [isDone, setIsDone] = useState(props.isDone)
-  const { isLoggedIn } = useContext(AuthContext)
+export default function TaskCard(props) {
+  const [isDone, setIsDone] = useState(props.isDone);
+  const { isLoggedIn } = useContext(AuthContext);
 
-  const getEmojiFrom = str => str.substring(0, 2)
+  const getEmojiFrom = (str) => str.substring(0, 2);
 
-  function hashCode(str) { // java String#hashCode
+  function hashCode(str) {
+    // java String#hashCode
     var hash = 0;
     for (var i = 0; i < str.length; i++) {
-       hash = str.charCodeAt(i) + ((hash << 3) - hash);
+      hash = str.charCodeAt(i) + ((hash << 3) - hash);
     }
     return hash;
-  } 
+  }
 
-  function intToRGB(i){
-      var c = (i & 0x00FFFFFF)
-          .toString(16)
-          .toUpperCase();
+  function intToRGB(i) {
+    var c = (i & 0x00ffffff).toString(16).toUpperCase();
 
-      return "00000".substring(0, 6 - c.length) + c;
+    return "00000".substring(0, 6 - c.length) + c;
   }
 
   return (
-    <Card className={taskCardStyle.card}
-          style={{ opacity: isDone ? 0.15 : 1, borderTop: "2px solid #" + intToRGB(hashCode(props.class))}}>
-
-      <Typography variant="body2">
-        {props.class}
-      </Typography>
+    <Card
+      className={taskCardStyle.card}
+      style={{
+        opacity: isDone ? 0.15 : 1,
+        borderTop: "2px solid #" + intToRGB(hashCode(props.class)),
+      }}
+    >
+      <Typography variant="body2">{props.class}</Typography>
 
       <CardContent>
         <Typography variant="h6">
           {getEmojiFrom(props.type)}
           {props.name}
         </Typography>
-        <Typography variant="body2">
-          {props.endTime}
-        </Typography>
+        <Typography variant="body2">{props.endTime}</Typography>
       </CardContent>
 
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-      }}>
-        {isLoggedIn && <ToggleCompleteButton id={props.id} isDone={isDone}
-                                             setIsDone={setIsDone}/>}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        {isLoggedIn && (
+          <ToggleCompleteButton
+            id={props.id}
+            isDone={isDone}
+            setIsDone={setIsDone}
+          />
+        )}
 
-        <TaskModal id={props.id} commentCount={props.commentCount}/>
+        <TaskModal id={props.id} commentCount={props.commentCount} />
       </div>
     </Card>
-
-  )
+  );
 }
