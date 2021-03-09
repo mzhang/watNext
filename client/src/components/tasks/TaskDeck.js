@@ -2,7 +2,7 @@ import TaskCard from './TaskCard.js'
 import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { AuthContext } from '../../AuthContext.js'
-import { Container } from '@material-ui/core'
+import { Container, CircularProgress } from '@material-ui/core'
 
 export default function TaskDeck () {
   const [data, setData] = useState(null)
@@ -31,7 +31,7 @@ export default function TaskDeck () {
     }
 
     if (data === null) {
-      return 'Loading!'
+      return <CircularProgress style={{marginTop:"15%"}}/>
     } else if (!data?.tasks?.length) {
       return 'The grind has stopped.'
     } else {

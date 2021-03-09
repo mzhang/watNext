@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import CommentCard from './CommentCard'
+import { CircularProgress } from '@material-ui/core'; 
 
 export default function CommentDeck (props) {
   const [commentCardData, setCommentCardData] = useState(null)
@@ -15,7 +16,7 @@ export default function CommentDeck (props) {
 
   const generateCommentDeck = () => {
     if (!commentCardData) {
-      return 'Loading!'
+      return <CircularProgress style={{marginTop:"15%"}}/>
     } else if (!commentCardData?.comment.length) {
       return <CommentCard user={'No comments here!'}
                           commentContent={'Maybe write one?'}/>
