@@ -30,7 +30,7 @@ export default function CommentForm (props) {
           style={{ display: 'grid', padding: '5%' }}>
       <TextField
         id="filled-multiline-static"
-        label="Cool comment goes here!"
+        label="Cool comment here!"
         multiline
         rows={4}
         variant="filled"
