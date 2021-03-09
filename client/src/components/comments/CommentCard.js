@@ -4,7 +4,7 @@ import commentCardStyle from './CommentCard.module.css'
 
 export default function CommentCard (props) {
   return (
-    <Card className={commentCardStyle.card}>
+    <Card className={commentCardStyle.card} style={{maxWidth:"1000px"}}>
       <CardContent>
 
         <Typography variant="h5" component="h2">
