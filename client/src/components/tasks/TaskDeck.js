@@ -5,7 +5,7 @@ import { AuthContext } from '../../AuthContext.js'
 import { Container, CircularProgress } from '@material-ui/core'
 
 export default function TaskDeck () {
-  const [data, setData] = useState(null)
+  const [tasks, setTasks] = useState(null)
   const { isLoggedIn } = useContext(AuthContext)
 
   useEffect(() => {
@@ -14,34 +14,36 @@ export default function TaskDeck () {
         (isLoggedIn
           ? 'getTasksDateFilteredWithMetadata'
           : 'getTasksDateFiltered'))
-      setData(res.data)
+      setTasks(res.data.tasks)
     }
     getRes()
   }, [isLoggedIn])
 
+  const setTaskIsDone = (taskID) => (isNewTaskDone) => {
+    const index = tasks.findIndex(task => task._id == taskID)
+    const temp = [...tasks]
+    // Object.assign(temp[index], {isDone : isNewTaskDone})
+    temp[index].isDone = isNewTaskDone
+    setTasks(temp)
+  }
+  
+  function createDateFormat () {
+    return new Intl.DateTimeFormat('default', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    })
+  }
+
   const generateTaskDeck = () => {
-    function createDateFormat () {
-      return new Intl.DateTimeFormat('default', {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-      })
-    }
-
-    const setTaskIsDone = (taskID) => newTaskIsDone => {
-        const temp = {...data}
-        temp.tasks.find(task => task._id == taskID).isDone = newTaskIsDone
-        setData(temp)
-    }
-
-    if (data === null) {
+    if (tasks === null) {
       return <CircularProgress style={{marginTop:"15%"}}/>
-    } else if (!data?.tasks?.length) {
+    } else if (!tasks?.length) {
       return 'The grind has stopped.'
     } else {
-      return data.tasks.map(task => 
+      return tasks.map(task => 
         <TaskCard
           id={task._id}
           key={task._id}

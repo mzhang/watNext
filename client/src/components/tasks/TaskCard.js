@@ -8,7 +8,7 @@ import { AuthContext } from "../../AuthContext.js";
 
 export default function TaskCard(props) {
   const { isLoggedIn } = useContext(AuthContext);
-
+  console.log(props.name)
   const getEmojiFrom = (str) => str.substring(0, 2);
 
   function hashCode(str) {
