@@ -1,29 +1,27 @@
-import { useState, useContext } from "react";
-import { Card, CardContent, Typography } from "@material-ui/core";
+import { memo, useState, useContext } from 'react'
+import { Card, CardContent, Typography } from '@material-ui/core'
 
-import TaskModal from "./TaskModal";
-import ToggleCompleteButton from "./ToggleCompleteButton";
-import taskCardStyle from "./TaskCard.module.css";
-import { AuthContext } from "../../AuthContext.js";
+import TaskModal from './TaskModal'
+import ToggleCompleteButton from './ToggleCompleteButton'
+import taskCardStyle from './TaskCard.module.css'
+import { AuthContext } from '../../AuthContext.js'
 
-export default function TaskCard(props) {
-  const { isLoggedIn } = useContext(AuthContext);
-  console.log(props.name)
-  const getEmojiFrom = (str) => str.substring(0, 2);
+function TaskCard (props) {
+  const { isLoggedIn } = useContext(AuthContext)
+  const getEmojiFrom = (str) => str.substring(0, 2)
 
-  function hashCode(str) {
+  function hashCode (str) {
     // java String#hashCode
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 3) - hash);
+    let hash = 0
+    for (let i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 3) - hash)
     }
-    return hash;
+    return hash
   }
 
-  function intToRGB(i) {
-    var c = (i & 0x00ffffff).toString(16).toUpperCase();
-
-    return "00000".substring(0, 6 - c.length) + c;
+  function intToRGB (i) {
+    const c = (i & 0x00ffffff).toString(16).toUpperCase()
+    return '00000'.substring(0, 6 - c.length) + c
   }
 
   return (
@@ -31,8 +29,8 @@ export default function TaskCard(props) {
       className={taskCardStyle.card}
       style={{
         opacity: props.isDone ? 0.15 : 1,
-        transition: "opacity 1s",
-        borderTop: "2px solid #" + intToRGB(hashCode(props.class)),
+        transition: 'opacity 1s',
+        borderTop: '2px solid #' + intToRGB(hashCode(props.class)),
       }}
     >
       <Typography variant="body2">{props.class}</Typography>
@@ -47,21 +45,23 @@ export default function TaskCard(props) {
 
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          flexWrap: "wrap",
+          display: 'flex',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
         }}
       >
         {isLoggedIn && (
           <ToggleCompleteButton
             id={props.id}
             isDone={props.isDone}
-            setIsDone={props.setIsDone}
+            setIsDone={(b) => {props.setIsDone(props.id, b)}}
           />
         )}
 
-        <TaskModal id={props.id} commentCount={props.commentCount} />
+        <TaskModal id={props.id} commentCount={props.commentCount}/>
       </div>
     </Card>
-  );
+  )
 }
+
+export default memo(TaskCard)

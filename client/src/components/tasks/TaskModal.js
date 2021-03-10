@@ -1,13 +1,13 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { Dialog, IconButton } from '@material-ui/core'
 import CommentDeck from '../comments/CommentDeck'
 import CommentForm from '../comments/CommentForm'
 import axios from 'axios'
 
-export default function TaskModal (props) {
+function TaskModal (props) {
   const [isOpen, setIsOpen] = useState(false)
 
-  const [commentCardData, setCommentCardData] = useState({comment:[]})
+  const [commentCardData, setCommentCardData] = useState({ comment: [] })
 
   const getNewComments = () => {
     axios.get('/api/task/getComments/' + props.id)
@@ -20,7 +20,7 @@ export default function TaskModal (props) {
     setIsOpen(true)
     getNewComments()
   }
-  
+
   const handleClose = () => {setIsOpen(false)}
   return (
     <>
@@ -29,9 +29,13 @@ export default function TaskModal (props) {
       </IconButton>
 
       <Dialog open={isOpen} onClose={handleClose} scroll="body">
-        <CommentDeck id={props.id} getNewComments={getNewComments} commentCardData={commentCardData}/>
-        <CommentForm id={props.id} getNewComments={getNewComments} commentCardData={commentCardData}/>
+        <CommentDeck id={props.id} getNewComments={getNewComments}
+                     commentCardData={commentCardData}/>
+        <CommentForm id={props.id} getNewComments={getNewComments}
+                     commentCardData={commentCardData}/>
       </Dialog>
     </>
   )
 }
+
+export default memo(TaskModal)
